@@ -7,7 +7,7 @@ import userRoute from "./routes/user.route.js";
 import messageRoute from "./routes/message.route.js";
 import { app, server } from "./SocketIO/server.js";
 
-// import path from "path";
+import path from "path";
 // import { fileURLToPath } from "url";
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
@@ -41,15 +41,16 @@ app.use("/message", messageRoute);
 
 
 // .....................code for deployement......................
-// if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
+  const dirPath = path.resolve();
 //   const frontendPath = path.join(__dirname, "frontend", "dist");
 
-//   app.use(express.static(frontendPath));
+  app.use(express.static("./Frontend/dist"));
 
-//   app.get(/.*/, (req, res) => {
-//     res.sendFile(path.resolve(frontendPath, "index.html"));
-//   });
-// }
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(dirPath, 'frontend/dist', 'index.html'));
+  });
+}
 
 //  NODE_ENV=production
 
