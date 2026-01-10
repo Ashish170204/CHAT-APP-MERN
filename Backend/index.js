@@ -43,24 +43,22 @@ app.use("/message", messageRoute);
 // .....................code for deployement......................
 if (process.env.NODE_ENV === "production") {
   const dirPath = path.resolve();
-//   const frontendPath = path.join(__dirname, "frontend", "dist");
 
-  app.use(express.static("./Frontend/dist"));
+  // serve frontend static files
+  app.use(express.static(path.join(dirPath, "Frontend", "dist")));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(dirPath, 'frontend/dist', 'index.html'));
+  // SPA fallback (NO ROUTE PATTERN → NO ERROR)
+  app.use((req, res) => {
+    res.sendFile(path.join(dirPath, "Frontend", "dist", "index.html"));
   });
 }
 
-//  NODE_ENV=production
 
 //  FRONTEND_URL=https://chat-app-1-s9k6.onrender.com
 
 //  VITE_BACKEND_URL=https://chat-app-1swp.onrender.com
  
 
-// "dev": "nodemon index.js",
-//     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
 
 server.listen(PORT, () => {
   console.log(`Server running on address http://localhost:${PORT}`);

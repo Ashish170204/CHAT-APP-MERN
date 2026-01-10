@@ -5,7 +5,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "build": "npm install && npm install --prefix Frontend && npm run build --prefix Frontend"
+
   },
   "author": "Ashish",
   "license": "ISC",
