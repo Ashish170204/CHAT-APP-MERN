@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 // app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: "http://localhost:5173",   
+  origin: true,   
   credentials: true,
 }));
 
@@ -40,17 +40,18 @@ app.use("/api/user", userRoute);
 app.use("/api/message", messageRoute);
 
 // .....................code for deployement......................
-// if (process.env.NODE_ENV === "production") {
-//   const dirPath = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve();
 
-//   // serve frontend static files
-//   app.use(express.static(path.join(dirPath, "Frontend", "dist")));
+  const frontendPath = path.join(__dirname, "Frontend", "dist");
 
-//   // SPA fallback (NO ROUTE PATTERN → NO ERROR)
-//   app.use((req, res) => {
-//     res.sendFile(path.join(dirPath, "Frontend", "dist", "index.html"));
-//   });
-// }
+  app.use(express.static(frontendPath));
+
+  app.use((req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+}
+
 // ...............................................................
 
 server.listen(PORT, () => {
