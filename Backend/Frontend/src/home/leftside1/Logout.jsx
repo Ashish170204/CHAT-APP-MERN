@@ -10,7 +10,7 @@ function Logout() {
      const handleLogout = async () => {
     setLoading(true);
     try {
-       const res = await axios.post("http://localhost:5022/user/logout", {}, {
+       const res = await axios.post("/api/user/logout", {}, {
         withCredentials: true,
         });
       localStorage.removeItem("messenger");

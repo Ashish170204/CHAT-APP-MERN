@@ -31,7 +31,7 @@ function Signup() {
     };
    
      await axios
-    .post("http://localhost:5022/user/signup", userInfo,
+    .post("/api/user/signup", userInfo,
         { withCredentials: true }
     )
     .then((response) => {

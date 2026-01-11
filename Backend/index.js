@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 // app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: process.env.FRONTEND_URL ||   "http://localhost:5173",     //"https://chat-app-1-s9k6.onrender.com",
+  origin: "http://localhost:5173",   
   credentials: true,
 }));
 
@@ -36,29 +36,22 @@ try {
 }
 
 
-app.use("/user", userRoute);
-app.use("/message", messageRoute);
-
+app.use("/api/user", userRoute);
+app.use("/api/message", messageRoute);
 
 // .....................code for deployement......................
-if (process.env.NODE_ENV === "production") {
-  const dirPath = path.resolve();
+// if (process.env.NODE_ENV === "production") {
+//   const dirPath = path.resolve();
 
-  // serve frontend static files
-  app.use(express.static(path.join(dirPath, "Frontend", "dist")));
+//   // serve frontend static files
+//   app.use(express.static(path.join(dirPath, "Frontend", "dist")));
 
-  // SPA fallback (NO ROUTE PATTERN → NO ERROR)
-  app.use((req, res) => {
-    res.sendFile(path.join(dirPath, "Frontend", "dist", "index.html"));
-  });
-}
-
-
-//  FRONTEND_URL=https://chat-app-1-s9k6.onrender.com
-
-//  VITE_BACKEND_URL=https://chat-app-1swp.onrender.com
- 
-
+//   // SPA fallback (NO ROUTE PATTERN → NO ERROR)
+//   app.use((req, res) => {
+//     res.sendFile(path.join(dirPath, "Frontend", "dist", "index.html"));
+//   });
+// }
+// ...............................................................
 
 server.listen(PORT, () => {
   console.log(`Server running on address http://localhost:${PORT}`);

@@ -17,7 +17,7 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:5022",    //import.meta.env.VITE_BACKEND_URL || 
+      const socket = io("http://localhost:5022",    
         {
           query: { userId: authUser.user._id },
     }

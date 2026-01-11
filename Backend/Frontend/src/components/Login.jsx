@@ -18,10 +18,8 @@ function Login() {
       email: data.email,
       password: data.password,
     };
-    //  try {
-    // const response = await axios.post("http://localhost:5022/user/login", userInfo)
      axios
-    .post("http://localhost:5022/user/login", userInfo, { withCredentials: true } )
+    .post("/api/user/login", userInfo, { withCredentials: true } )
     .then((response) => {
           console.log(response.data);
           if(response.data){

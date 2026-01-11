@@ -13,7 +13,7 @@ const useGetMessage = () => {
       if (selectedConversation && selectedConversation._id) {
         try {
           const res = await axios.get(
-            `http://localhost:5022/message/get/${selectedConversation._id}`,{
+            `/api/message/get/${selectedConversation._id}`,{
                withCredentials: true
             });
           setMessage(res.data);
