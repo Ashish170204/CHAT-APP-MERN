@@ -86,7 +86,7 @@ function Login() {
             Login
           </button>
           <p className="text-center">
-            Don't have an account?{" "}
+            <p className="text-white">Don't have an account?{" "}</p>
             <Link
               to="/signup"
               className="text-blue-500 font-bold underline cursor-pointer ml-1"

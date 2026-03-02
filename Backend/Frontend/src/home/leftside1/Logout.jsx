@@ -27,8 +27,8 @@ function Logout() {
 
   return (
 
-      <div className="w-[4%] bg-slate-900 text-gray-300 flex flex-col justify-end">
-        <div className="p-3 align-bottom">
+      <div className="w-14 bg-slate-900 text-gray-300 flex flex-col justify-end">
+        <div className="p-1 align-bottom">
           <button>
             <BiLogOutCircle className="text-5xl p-2 hover:bg-gray-600 rounded-lg duration-300" 
             onClick={handleLogout}

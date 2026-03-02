@@ -138,7 +138,7 @@ function Signup() {
 
           {/* Fixed text */}
           <p className="text-center">
-            Have an Account? {/* Uncomment when you have a router set up */}
+            <p className="text-white"> Have an Account? </p>
             <Link
               to="/login"
               className="text-blue-500 font-bold underline cursor-pointer"
