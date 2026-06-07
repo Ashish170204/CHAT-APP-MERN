@@ -95,7 +95,7 @@ function Login() {
             </Link>
           </p>
         </form>
-      </div>
+      </div>  
     </div>
   );
 }

@@ -18,9 +18,9 @@ function Chatuser() {
         {/* <div className={`avatar ${isOnline ? "online" : ""}`}> */}
         <div className="avatar avatar-online">
           <div className="w-12 rounded-full">
-            <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
+            <img src="https://i.pinimg.com/736x/44/93/f3/4493f30f04ea1881d3df9956bf62f91a.jpg" />
           </div>
-        </div>
+        </div> 
  
         <div>
           <h1 className='text-xl'>{selectedConversation?.name || "Select a user"}</h1>
