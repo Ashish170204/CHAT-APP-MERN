@@ -3,35 +3,34 @@ import useConversation from "../../statemanage/useConversation.js";
 import { useSocketContext } from "../../context/SocketContext.jsx";
 
 function Chatuser() {
-
   const { selectedConversation } = useConversation();
-  console.log(selectedConversation);
   const { onlineUsers } = useSocketContext();
-  const getOnlineUsersStatus = (userId) => {
-  return onlineUsers.includes(userId) ? "Online" : "Offline";
-  };
 
-
-  return (
- <div> 
-      <div className='flex space-x-4 h-[10vh] px-3 py-3 bg-gray-700 hover:bg-slate-600 duration-300 '>
-        {/* <div className={`avatar ${isOnline ? "online" : ""}`}> */}
-        <div className="avatar avatar-online">
-          <div className="w-12 rounded-full">
-            <img src="https://i.pinimg.com/736x/44/93/f3/4493f30f04ea1881d3df9956bf62f91a.jpg" />
-          </div>
-        </div> 
- 
-        <div>
-          <h1 className='text-xl'>{selectedConversation?.name || "Select a user"}</h1>
-          {/* <h1 className='text-xl'>Ashish</h1> */}
-          {/* <span className='text-sm'>online</span> */}
-          <span className='text-sm'> {getOnlineUsersStatus(selectedConversation._id)}</span>
-        </div>
-      </div>     
- </div>
-
+  const isOnline = onlineUsers.includes(
+  selectedConversation?._id?.toString()
   );
+
+return (
+  <div className="flex space-x-4 h-[10vh] px-3 py-3 bg-gray-700">
+    <div className={`avatar ${isOnline ? "online" : ""}`}>
+      <div className="w-12 rounded-full">
+        <img src="https://i.pinimg.com/736x/44/93/f3/4493f30f04ea1881d3df9956bf62f91a.jpg" />
+      </div>
+    </div>
+
+    <div>
+      <h1 className="text-xl">
+        {selectedConversation?.name || "Select a user"}
+      </h1>
+
+      <span className="text-sm">
+        {selectedConversation
+          ? (isOnline ? "Online" : "Offline")
+          : ""}
+      </span>
+    </div>
+  </div>
+);
 }
 
 export default Chatuser;

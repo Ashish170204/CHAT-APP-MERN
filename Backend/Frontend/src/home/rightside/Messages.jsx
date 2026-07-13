@@ -8,7 +8,7 @@ function Messages() {
    const { loading, messages } = useGetMessage();
      useGetSocketMessage(); // listing incoming messages
   console.log(messages);
-  const lastMsgRef = useRef();
+  const lastMsgRef = useRef();  //re-render ni krna and latest message dene hai scrolling m..
   useEffect(() => {
     setTimeout(() => {
       if (lastMsgRef.current) {

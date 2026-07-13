@@ -8,7 +8,7 @@ function Left() {
 
   return (
     <>
-      {/* ☰ MENU BUTTON (only mobile) */}
+      {/* MENU BUTTON (only mobile) */}
       <button
         className="md:hidden fixed top-3 left-3 z-50 text-white text-3xl"
         onClick={() => setOpen(true)}
@@ -28,14 +28,14 @@ function Left() {
       <div
         className={`
           fixed md:relative top-0 left-0 h-full z-50
-          w-[80%] sm:w-[70%] md:w-[30%] lg:w-[25%]
+          w-[50%] sm:w-[50%] md:w-[30%] lg:w-[25%]
           bg-black text-gray-300
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0
         `}
       >
-        {/* ❌ CLOSE BUTTON (mobile) */}
+        {/*  CLOSE BUTTON (mobile) */}
         <div className="md:hidden flex justify-end p-4">
           <FiX
             className="text-3xl cursor-pointer"

@@ -12,28 +12,6 @@ function Right() {
     return () => setSelectedConversation(null); // cleanup on unmount
   }, [setSelectedConversation]);
 
-  // return (
-  //   <div className="w-full bg-slate-900 text-gray-300">
-  //     <div>
-  //       {!selectedConversation ? (
-  //         <NoChatSelected />
-  //       ) : (
-  //         <>
-  //           <Chatuser />
-  //           <div
-  //             className="flex-1 overflow-y-auto"
-  //             style={{ maxHeight: "calc(88vh - 8vh)" }}
-  //           >
-  //             <Messages />
-  //           </div>
-  //           <Type /> {/* corrected here */}
-  //         </>
-  //        )} 
-  //     </div>
-  //   </div>
-
-  // );
-
   return (
     <div className="w-full h-full bg-slate-900 text-gray-300 flex flex-col">
       {!selectedConversation ? (

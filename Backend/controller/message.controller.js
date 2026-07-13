@@ -23,15 +23,12 @@ export const sendMessage = async (req, res) => {
     if (newMessage) {
       conversation.messages.push(newMessage._id);
     }
-    // await conversation.save()
-    // await newMessage.save();
     await Promise.all([conversation.save(), newMessage.save()]); // run parallel
-     const receiverSocketId = getReceiverSocketId(receiverId);
+     const receiverSocketId = getReceiverSocketId(receiverId);  //server.js se lia
     if (receiverSocketId) {
-      io.to(receiverSocketId).emit("newMessage", newMessage);
+      io.to(receiverSocketId).emit("newMessage", newMessage);  //Send message instantly and this is listen in the usegetsocketmessage.js
     }
     res.status(201).json(newMessage);
-    // res.status(201).json({ message:"MESSAGE SENT SUCCESSFULLY", newMessage }); //NO NEED
   } catch (error) {
     console.log("Error in sendMessage", error);
     res.status(500).json({ error: "Internal server error" });
@@ -46,7 +43,7 @@ export const getMessage = async (req, res) => {
       members: { $all: [senderId, chatUser] },
     }).populate("messages");
     if (!conversation) {
-      return res.status(201).json([]);
+      return res.status(201).json([]);  // if never chatted show null
     }
     const messages = conversation.messages;
     res.status(201).json(messages);

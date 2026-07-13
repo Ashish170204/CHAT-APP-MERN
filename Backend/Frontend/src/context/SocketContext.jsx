@@ -2,7 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
 import io from "socket.io-client";
 
-const socketContext = createContext();
+const socketContext = createContext(); //Creates a global context to store:socket and onlineUsers
+
 
 // // it is a hook.
 export const useSocketContext = () => {
@@ -11,8 +12,8 @@ export const useSocketContext = () => {
 
 
 export const SocketProvider = ({ children }) => {
-  const [socket, setSocket] = useState(null);
-  const [onlineUsers, setOnlineUsers] = useState([]);
+  const [socket, setSocket] = useState(null);   
+  const [onlineUsers, setOnlineUsers] = useState([]); 
   const [authUser] = useAuth();
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export const SocketProvider = ({ children }) => {
     }
        );
       setSocket(socket);
-      socket.on("getOnlineUsers", (users) => {
+      socket.on("getOnlineUsers", (users) => {   //server.js se receive krega.
         setOnlineUsers(users);
       });
       return () => socket.close();

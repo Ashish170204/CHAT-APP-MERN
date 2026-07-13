@@ -13,25 +13,6 @@ function Type() {
       setMessage("");
     };
 
-  // return (
-
-  //   <form onSubmit={handleSubmit}>
-  //     <div className="flex space-x-1 h-[8vh] text-center bg-gray-800">
-  //       <div className="w-[70%] mx-4">
-  //         <input type="text"
-  //           value={message}
-  //           onChange={(e) => setMessage(e.target.value)}
-  //           placeholder="Type here" className="border-[1px] border-gray-700  flex items-center w-full py-3 px-3 rounded-xl grow outline-none bg-slate-900 mt-1" />
-  //       </div>
-  //       <button className="text-3xl" >
-  //         <RiSendPlaneFill />
-  //       </button>
-
-  //     </div>
-  //   </form>
-
-  // )
-
    return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="flex items-center h-[8vh] px-3 bg-gray-800">

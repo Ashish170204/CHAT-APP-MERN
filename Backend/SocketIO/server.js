@@ -20,7 +20,6 @@ export const getReceiverSocketId = (receiverId) => {
 
 const users = {};
 
-// used to listen events on server side.
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
   const userId = socket.handshake.query.userId;
@@ -28,16 +27,13 @@ io.on("connection", (socket) => {
     users[userId] = socket.id;
     console.log("Hello ", users);
   }
-  // used to send the events to all connected users
-  io.emit("getOnlineUsers", Object.keys(users));
+  io.emit("getOnlineUsers", Object.keys(users));  //SocketContext.jsx m jayega.
 
-  // used to listen client side events emitted by server side (server & client)
   socket.on("disconnect", () => {
     console.log("a user disconnected", socket.id);
     delete users[userId];
     io.emit("getOnlineUsers", Object.keys(users));
   });
 });
-
-
+  
 export { app, io, server };

@@ -13,7 +13,7 @@ const useSendMessage = () => {
           {message},
           {withCredentials: true}
       );
-      setMessage([...messages, res.data]);
+      setMessage([...messages, res.data]);  //spread operator takes all the elements of the messages array and puts them into a new array
       setLoading(false);
     } catch (error) {
       console.log("Error in send messages", error);
